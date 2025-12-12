@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 
+import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
@@ -16,6 +17,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
   <body>
     <slot/>
   </body>
+  <Analytics/>
   <SpeedInsights/>
 </html>
 
