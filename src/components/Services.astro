@@ -1,0 +1,172 @@
+---
+const services = [
+  {
+    title: "Creación de Empresa",
+    text: "Constitución rápida mediante 'Tu empresa en un día'. Redacción de estatutos, inicio de actividades y obtención de RUT.",
+    icon: "rocket",
+    color: "bg-red-50 text-[#cc3333]",
+  },
+  {
+    title: "Ciclo de Vida",
+    text: "Acompañamiento integral: modificaciones societarias, transformaciones, fusiones, términos de giro y disoluciones.",
+    icon: "domain",
+    color: "bg-blue-50 text-blue-600",
+  },
+  {
+    title: "Contabilidad Digital",
+    text: "Procesamiento electrónico de información. Balances, estados de resultados y libros contables obligatorios al día.",
+    icon: "description",
+    color: "bg-green-50 text-green-600",
+  },
+  {
+    title: "Asesoría Tributaria",
+    text: "Planificación y cumplimiento tributario. Declaraciones mensuales (F29) y anuales (F22), DDJJ y representación ante el SII.",
+    icon: "balance",
+    color: "bg-purple-50 text-purple-600",
+  },
+  {
+    title: "Remuneraciones",
+    text: "Gestión de nómina, contratos, finiquitos y pago de cotizaciones previsionales. Cumplimiento total de la normativa laboral.",
+    icon: "wallet",
+    color: "bg-orange-50 text-orange-600",
+  },
+  {
+    title: "Asesoría Financiera",
+    text: "Análisis de flujos de caja, presupuestos y evaluación de proyectos para una toma de decisiones informada y estratégica.",
+    icon: "chart",
+    color: "bg-teal-50 text-teal-600",
+  },
+];
+---
+
+<section id="services" class="py-20 md:py-32 bg-gray-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2
+        class="text-base text-[#cc3333] font-semibold tracking-wide uppercase mb-2"
+      >
+        Nuestros Servicios
+      </h2>
+      <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Soluciones Integrales para tu Negocio
+      </h3>
+      <p class="text-lg text-gray-600">
+        Cubrimos todas las necesidades administrativas, contables y legales de
+        tu empresa, permitiéndote enfocar tu energía en el crecimiento.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        services.map((service) => (
+          <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+            <div
+              class={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${service.color} group-hover:scale-110 transition-transform duration-300`}
+            >
+              {service.icon === "rocket" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              )}
+              {service.icon === "domain" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              )}
+              {service.icon === "description" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              )}
+              {service.icon === "balance" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                  />
+                </svg>
+              )}
+              {service.icon === "wallet" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              )}
+              {service.icon === "chart" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                  />
+                </svg>
+              )}
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-3">
+              {service.title}
+            </h4>
+            <p class="text-gray-600 leading-relaxed">{service.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

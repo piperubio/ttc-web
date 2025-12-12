@@ -3,16 +3,79 @@ import "../styles/global.css";
 
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = "Tributo Tecnológico | Contadores Auditores",
+  description = "Servicios de contabilidad, auditoría y asesoría tributaria en San Antonio. Expertos en creación de empresa en un día y contabilidad digital. TT Contadores.",
+} = Astro.props;
+
+const siteUrl = "https://ttcontadores.cl"; // Reemplazar con la URL real si es diferente
+const image = "/hero/hero3.png"; // Imagen por defecto para compartir
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico">
     <meta name="generator" content={Astro.generator}>
-    <title>Astro Basics</title>
+
+    <!-- SEO Principal -->
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta
+      name="keywords"
+      content="Contador San Antonio, Empresa en un día, Empresa en un día San Antonio, TT Contadores, Tributo tecnológico Contadores, Contabilidad San Antonio, Asesoría Tributaria"
+    >
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href={siteUrl}>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={siteUrl}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:image" content={new URL(image, siteUrl)}>
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content={siteUrl}>
+    <meta property="twitter:title" content={title}>
+    <meta property="twitter:description" content={description}>
+    <meta property="twitter:image" content={new URL(image, siteUrl)}>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "AccountingService",
+        "name": "Tributo Tecnológico Contadores",
+        "alternateName": "TT Contadores",
+        "image": "https://ttcontadores.cl/hero/hero3.png",
+        "description": "Servicios de contabilidad y asesoría tributaria en San Antonio. Especialistas en Empresa en un día.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Antonio",
+          "addressRegion": "Valparaíso",
+          "addressCountry": "CL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-33.5942",
+          "longitude": "-71.6069"
+        },
+        "url": "https://ttcontadores.cl",
+        "telephone": "+56992825750",
+        "email": "tributotecnologico@yahoo.es",
+        "priceRange": "$$"
+      }
+    </script>
   </head>
   <body>
     <slot/>
