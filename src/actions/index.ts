@@ -1,5 +1,6 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
+import { Resend } from "resend";
 
 export const server = {
   sendContactEmail: defineAction({
@@ -11,25 +12,36 @@ export const server = {
       message: z.string().min(1, "El mensaje es requerido"),
     }),
     handler: async (input) => {
-      // Simulate email sending delay
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      const resend = new Resend(import.meta.env.RESEND_API_KEY);
+      const contactEmail = import.meta.env.CONTACT_EMAIL;
 
-      // TODO: Implement actual email sending logic here.
-      // You can use services like Resend, SendGrid, or Nodemailer.
-      // Example with Resend:
-      // await resend.emails.send({
-      //   from: 'onboarding@resend.dev',
-      //   to: 'contacto@ttcontadores.cl',
-      //   subject: `Nuevo mensaje de ${input.name}`,
-      //   html: `<p>Nombre: ${input.name}</p><p>Email: ${input.email}</p><p>Teléfono: ${input.phone}</p><p>Mensaje: ${input.message}</p>`
-      // });
+      if (!contactEmail) {
+        throw new Error("CONTACT_EMAIL environment variable is not set");
+      }
 
-      console.log("Contact form submitted:", input);
+      const { data, error } = await resend.emails.send({
+        from: "Catbel Web <onboarding@resend.dev>",
+        to: [contactEmail],
+        subject: `New Contact Form Submission from ${input.name}`,
+        html: `
+          <h2>New Contact Request</h2>
+          <p><strong>Name:</strong> ${input.name}</p>
+          <p><strong>Email:</strong> ${input.email}</p>
+          <p><strong>Phone:</strong> ${input.phone}</p>
+          <p><strong>Message:</strong></p>
+          <p>${input.message.replace(/\n/g, "<br>")}</p>
+        `,
+      });
 
-      // For now, we just return success
+      if (error) {
+        console.error("Resend Error:", error);
+        throw new Error(error.message);
+      }
+
       return {
         success: true,
         message: "Mensaje enviado correctamente",
+        id: data.id,
       };
     },
   }),
