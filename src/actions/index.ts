@@ -20,7 +20,7 @@ export const server = {
       }
 
       const { data, error } = await resend.emails.send({
-        from: "Catbel Web <onboarding@resend.dev>",
+        from: "Catbel Web <contactoweb@send.ttcontadores.cl>",
         to: [contactEmail],
         subject: `New Contact Form Submission from ${input.name}`,
         html: `
