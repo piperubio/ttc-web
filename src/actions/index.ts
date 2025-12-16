@@ -20,15 +20,15 @@ export const server = {
       }
 
       const { data, error } = await resend.emails.send({
-        from: "Catbel Web <contactoweb@send.ttcontadores.cl>",
+        from: "Tributo Tecnológico Web <contactoweb@send.ttcontadores.cl>",
         to: [contactEmail],
-        subject: `New Contact Form Submission from ${input.name}`,
+        subject: `Nuevo envío de formulario web de ${input.name}`,
         html: `
-          <h2>New Contact Request</h2>
-          <p><strong>Name:</strong> ${input.name}</p>
+          <h2>Nueva Solicitud de Contacto</h2>
+          <p><strong>Nombre:</strong> ${input.name}</p>
           <p><strong>Email:</strong> ${input.email}</p>
-          <p><strong>Phone:</strong> ${input.phone}</p>
-          <p><strong>Message:</strong></p>
+          <p><strong>Teléfono:</strong> ${input.phone}</p>
+          <p><strong>Mensaje:</strong></p>
           <p>${input.message.replace(/\n/g, "<br>")}</p>
         `,
       });
@@ -40,7 +40,8 @@ export const server = {
 
       return {
         success: true,
-        message: "Mensaje enviado correctamente",
+        message:
+          "Mensaje enviado correctamente. Pronto recibirás noticias nuestras.",
         id: data.id,
       };
     },
